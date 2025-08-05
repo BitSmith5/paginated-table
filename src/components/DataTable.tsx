@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import './DataTable.css';
+import './Pagination.css';
 
 type DataRow = {
   id: string;
@@ -39,7 +41,7 @@ export function DataTable({ data, itemsPerPage = 10, showPagination = true, onRo
 
   return (
     <div>
-      <table>
+      <table className="data-table">
         <thead>
           <tr>
             {Object.keys(data[0] || {}).map((key) => (
@@ -51,7 +53,11 @@ export function DataTable({ data, itemsPerPage = 10, showPagination = true, onRo
           {currentData.map((row) => (
             <tr key={row.id} onClick={() => handleRowClick(row)}>
               {Object.values(row).map((value, index) => (
-                <td key={index}>{value.toString()}</td>
+                <td 
+                  key={index}
+                >
+                  {value.toString()}
+                </td>
               ))}
             </tr>
           ))}
